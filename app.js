@@ -15,12 +15,18 @@ function updateAccordionUI(currAccordion) {
       ? `${accordionBody.scrollHeight}px`
       : "0");
 
+  const controlAccordionBtn = (accordion) =>
+    (accordion.querySelector(".accordion__btn").src = `./assets/images/icon-${
+      accordion.classList.contains("active") ? "minus" : "plus"
+    }.svg`);
+
   accordions.forEach((accordion) => {
     const accordionBody = accordion.querySelector(".accordion__body");
 
     if (currAccordion === accordion && accordion.classList.contains("active")) {
       accordion.classList.remove("active");
       controlAccordionHeight(accordion, accordionBody);
+      controlAccordionBtn(accordion);
       return;
     }
 
@@ -28,9 +34,6 @@ function updateAccordionUI(currAccordion) {
       ? accordion.classList.add("active")
       : accordion.classList.remove("active");
     controlAccordionHeight(accordion, accordionBody);
-
-    accordion.querySelector(".accordion__btn").src = `./assets/images/icon-${
-      accordion.classList.contains("active") ? "minus" : "plus"
-    }.svg`;
+    controlAccordionBtn(accordion);
   });
 }
