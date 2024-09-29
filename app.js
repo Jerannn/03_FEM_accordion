@@ -23,15 +23,8 @@ function updateAccordionUI(currAccordion) {
   accordions.forEach((accordion) => {
     const accordionBody = accordion.querySelector(".accordion__body");
 
-    if (currAccordion === accordion && accordion.classList.contains("active")) {
-      accordion.classList.remove("active");
-      controlAccordionHeight(accordion, accordionBody);
-      controlAccordionBtn(accordion);
-      return;
-    }
-
     currAccordion === accordion
-      ? accordion.classList.add("active")
+      ? accordion.classList.toggle("active")
       : accordion.classList.remove("active");
     controlAccordionHeight(accordion, accordionBody);
     controlAccordionBtn(accordion);
